@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>my wahalah project</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laterally Loaded Pile Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ANALYSIS OF LATERALLY LOADED PILE</h1>
+          <h2>By</h2>
+          <h2> Mus'ab Bello Muhammad </h2>
+          <div>ENG/18/CIV/00062</div>
+          <img 
+               class='school-logo' src="https://i.postimg.cc/Dyx82stX/Whats-App-Image-2025-04-08-at-19-17-50-7546c892.jpg" alt="My Image" />
+
+        </header>
+
+        <div class="tabs-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab('soil-conditions')">Soil Conditions</button>
+                <button class="tab-button" onclick="openTab('pile-properties')">Pile Properties</button>
+                <button class="tab-button" onclick="openTab('loading')">Loading</button>
+                <button class="tab-button" onclick="openTab('results')">Results</button>
+            </div>
+
+            <div id="soil-conditions" class="tab-content active">
+                <div class="soil-type-section">
+                    <h3>Soil Type</h3>
+                    <div class="toggle-group">
+                        <label>Soil Category:</label>
+                        <div class="toggle-options">
+                            <button class="toggle-button active" onclick="toggleSoilType('cohesive')">Cohesive</button>
+                            <button class="toggle-button" onclick="toggleSoilType('non-cohesive')">Non-Cohesive</button>
+                        </div>
+                    </div>
+
+                    <div class="toggle-group">
+                        <label>Soil Strata:</label>
+                        <div class="toggle-options">
+                            <button class="toggle-button active" onclick="toggleSoilStrata('homogeneous')">Homogeneous</button>
+                            <button class="toggle-button" onclick="toggleSoilStrata('non-homogeneous')">Non-Homogeneous</button>
+                        </div>
+                    </div>
+
+                    <div class="toggle-group">
+                        <label>Saturation:</label>
+                        <div class="toggle-options">
+                            <button class="toggle-button active" onclick="toggleSaturation('saturated')">Saturated</button>
+                            <button class="toggle-button" onclick="toggleSaturation('non-saturated')">Non-Saturated</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="homogeneous-vars" class="soil-variables">
+                    <h3>Soil Parameters</h3>
+                    <div class="input-group">
+                        <label for="poisson-ratio">Poisson's Ratio (ν):</label>
+                        <input type="number" id="poisson-ratio" step="0.01" min="0" max="0.5" value="0.3">
+                    </div>
+                    <div class="input-group">
+                        <label for="unit-weight">Unit Weight of Soil (γ) kN/m³:</label>
+                        <input type="number" id="unit-weight" step="0.1" min="0" value="18">
+                    </div>
+                    <div id="cohesive-vars">
+                        <div class="input-group">
+                            <label for="cu">Undrained Shear Strength (Cu) kN/m²:</label>
+                            <input type="number" id="cu" step="1" min="0" value="50">
+                        </div>
+                    </div>
+                    <div id="non-cohesive-vars" style="display: none;">
+                        <div class="input-group">
+                            <label for="friction-angle">Angle of Internal Friction (φ) degrees:</label>
+                            <input type="number" id="friction-angle" step="1" min="0" max="43" value="30">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="non-homogeneous-vars" class="soil-variables" style="display: none;">
+                    <h3>Non-Homogeneous Soil Parameters</h3>
+                    <div class="input-group">
+                        <label for="cu-prime">Undrained Shear Strength kN/m²:</label>
+                        <input type="number" id="cu-prime" step="1" min="0" value="50">
+                    </div>
+                    <div class="input-group">
+                        <label for="m-value">Rate of Increase of Shear Strength (Cu') kN/m²/m:</label>
+                        <input type="number" id="m-value" step="1" min="0" value="2.5">
+                    </div>
+                </div>
+            </div>
+
+            <div id="pile-properties" class="tab-content">
+                <div class="pile-type-section">
+                    <h3>Pile Type</h3>
+                    <div class="toggle-group">
+                        <label>Head Condition:</label>
+                        <div class="toggle-options">
+                           <button class="toggle-button active" onclick="toggleHeadCondition('fixed', event)">Fixed Head</button>
+                           <button class="toggle-button" onclick="toggleHeadCondition('free', event)">Free Head</button>
+                        </div>
+                    </div>
+                  
+                    <img id="fixed-head-img" src="https://i.postimg.cc/jW1TtDjW/Whats-App-Image-2025-04-27-at-00-01-14-de18d854.jpg" alt="Fixed Head Image" style="display: none;" />
+
+
+
+<img id="free-head-img" src="https://i.postimg.cc/3JXzpFKk/Whats-App-Image-2025-04-27-at-00-01-16-c3ff2a34.jpg" alt="Free Head Image" style="display: none;" />
+
+                    <div class="toggle-group">
+                        <label>Section Type:</label>
+                        <div class="toggle-options">
+                            <button class="toggle-button active" onclick="toggleSectionType('solid')">Solid (Concrete)</button>
+                            <button class="toggle-button" onclick="toggleSectionType('hollow')">Hollow (Steel)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pile-variables">
+                    <div class="input-group">
+                        <label for="pile-length">Pile Length (L) m:</label>
+                        <input type="number" id="pile-length" step="0.1" min="0" value="10">
+                    </div>
+                    <div class="input-group">
+                        <label for="pile-diameter">Pile Diameter (d) mm:</label>
+                        <input type="number" id="pile-diameter" step="1" min="0" value="1500">
+                    </div>
+
+                    <div id="solid-section-vars">
+                        <h3>Concrete Solid Section Properties</h3>
+                        <div class="input-group">
+                            <label for="as">Area of Steel Provided (As) mm²:</label>
+                            <input type="number" id="as" step="1" min="0" value="2500">
+                        </div>
+                        <div class="input-group">
+                            <label for="fy">Characteristic Strength of Steel (fy) N/mm²:</label>
+                            <select id="fy">
+                                <option value="250">250</option>
+                                <option value="410">410</option>
+                                <option value="460" selected>460</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="fck">Compressive Strength of Concrete (fck) N/mm²:</label>
+                            <select id="fck">
+                                <option value="25">G25</option>
+                                <option value="30" selected>G30</option>
+                                <option value="50">G50</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="long-bar-dia">Longitudinal Bar Diameter mm:</label>
+                            <select id="long-bar-dia">
+                                <option value="20">Y20</option>
+                                <option value="25" selected>Y25</option>
+                                <option value="32">Y32</option>
+                                <option value="40">Y40</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="cover">Cover mm:</label>
+                            <select id="cover">
+                                <option value="50">50</option>
+                                <option value="75" selected>75</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="link-dia">Shear Links Bar Diameter mm:</label>
+                            <select id="link-dia">
+                                <option value="10">Y10</option>
+                                <option value="12" selected>Y12</option>
+                                <option value="16">Y16</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="no-legs">Number of Legs:</label>
+                            <select id="no-legs">
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="spacing">Shear Link Spacing mm:</label>
+                            <select id="spacing">
+                                <option value="50">50</option>
+                                <option value="75">75</option>
+                                <option value="100" selected>100</option>
+                                <option value="125">125</option>
+                                <option value="150">150</option>
+                                <option value="175">175</option>
+                                <option value="200">200</option>
+                                <option value="225">225</option>
+                                <option value="250">250</option>
+                                <option value="275">275</option>
+                                <option value="300">300</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+
+                    <div id="hollow-section-vars" style="display: none;">
+                        <h3>Steel Hollow Section Properties</h3>
+                        <div class="input-group">
+                            <label for="thickness">Thickness of Section (t) mm:</label>
+                            <input type="number" id="thickness" step="1" min="0" value="50">
+                        </div>
+                        <div class="input-group">
+                            <label for="steel-fy">Yield Strength of Steel (fy) N/mm²:</label>
+                            <input type="number" id="steel-fy" step="1" min="0" value="355">
+                        </div>
+                        <div class="input-group">
+                            <label for="esteel">Elastic Modulus of Steel (E) GPa:</label>
+                            <input type="number" id="esteel" step="1" min="0" value="210">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loading" class="tab-content">
+                <h3>Loading Conditions</h3>
+                <div class="input-group">
+                    <label for="lateral-load">Applied Lateral Load (H) MN:</label>
+                    <input type="number" id="lateral-load" step="0.01" min="0" value="1">
+                </div>
+                <div class="input-group">
+                    <label for="moment">Applied Moment (M) MNm:</label>
+                    <input type="number" id="moment" step="0.01" min="0" value="1">
+                </div>
+            </div>
+
+            <div id="results" class="tab-content">
+                <div class="results-section">
+                    <h3>Analysis Results</h3>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <label>Characteristic Shear Modulus (Gc) MPa:</label>
+                            <span id="gc-result">-</span>
+                        </div>
+                        <div class="result-item">
+                            <label>Passive Earth Pressure (Kp):</label>
+                            <span id="kp-result">-</span>
+                        </div>
+                        <div class="result-item">
+                            <label>Pile Critical Length (Lc) m:</label>
+                            <span id="lc-result">-</span>
+                        </div>
+                        <div class="result-item">
+                            <label>Maximum Moment (Mmax) MNm:</label>
+                            <span id="mmax-result">-</span>
+                        </div>
+                        <div class="result-item">
+                            <label>Maximum Shear (Vmax) MN:</label>
+                            <span id="vmax-result">-</span>
+                        </div>
+                        <div class="result-item">
+                            <label>Maximum Deflection (Yg) mm:</label>
+                            <span id="yg-result">-</span>
+                        </div>
+                        <div class="result-item">
+                            <label>Slope at Ground Level (θ) radians:</label>
+                            <span id="slope-result">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-section">
+                    <h3>Pile Capacity Results</h3>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <label>Moment Capacity (Mc) MNm:</label>
+                            <span id="mc-result">-</span>
+                        </div>
+                        <div class="result-item">
+                            <label>Shear Capacity (Vc) MN:</label>
+                            <span id="vc-result">-</span>
+                        </div>
+                        <div class="result-item">
+                            <label>Lateral Capacity (Pu) MN:</label>
+                            <span id="pu-result">-</span>
+                        </div>
+                        <div id="section-modulus-item" class="result-item">
+                            <label>Section Modulus (S) m³:</label>
+                            <span id="s-result">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-section">
+                    <h3>Design Checks</h3>
+                    <div class="results-grid">
+                        <div class="result-item check-item">
+                            <label>Lateral Capacity Check (Pu ≥ H):</label>
+                            <span id="lateral-check">-</span>
+                        </div>
+                        <div class="result-item check-item">
+                            <label>Shear Check (Vc ≥ Vmax):</label>
+                            <span id="shear-check">-</span>
+                        </div>
+                        <div class="result-item check-item">
+                            <label>Moment Check (Mc ≥ Mmax):</label>
+                            <span id="moment-check">-</span>
+                        </div>
+                        <div class="result-item check-item">
+                            <label>Deflection Check (Yg ≤ 25mm):</label>
+                            <span id="deflection-check">-</span>
+                        </div>
+                        <div class="result-item check-item">
+        <label>Slope Check (θ ≤ 0.0175 rad):</label>
+                            <span id="slope-check">-</span>
+                        </div>
+  
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+        <button class="calculate-button">Calculate Results</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
