@@ -1,0 +1,44 @@
+
+body {
+  font-family: arial;
+}
+
+.display-todo,
+.todoHTML-grid {
+display: grid;
+grid-template-columns: 200px 150px 100px;
+column-gap: 10px;
+row-gap: 10px;
+align-items: center;
+}
+.todoHTML-grid {
+margin-bottom: 10px;
+align-items: stretch;
+}
+
+.input-key,
+.calender {
+  font-size: 14px;
+  padding: 5px;
+  cursor: pointer;
+  
+}
+
+.add-button {
+  background-color: rgb(6, 163, 6); 
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  
+}
+.delete-button{
+  background-color: rgb(150, 14, 14);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}

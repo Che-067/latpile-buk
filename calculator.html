@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>boko-haram</title>
+<style>
+  .diplay-calculation {
+    color: aliceblue;
+    font-weight:500;
+    font-size: 50px;
+    font-family: arial;
+    margin-left: 20px;
+  }
+  .first-line {
+    color: aliceblue;
+    font-size: 30px;
+    font-weight: 400;
+    padding-left: 2px;
+    
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+    background-color: grey;
+    border: none;
+    margin-right: 10px;
+    margin-left: 10px;
+   
+    
+  }
+  .second-line {
+    font-size: larger;
+    font-weight: bold;
+    padding: 15px 15px;
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+    background-color: orange;
+    border: none;
+    color: aliceblue;
+    margin-right: 20px;
+    vertical-align: bottom;
+  }
+  .group {
+    display: inline-block;
+    background-color: black;
+  }
+  .clear {
+    border: none;
+    margin-right: 10px;
+    margin-left: 20px;
+  }
+</style>
+</head>
+<body>
+
+<header><h1>CALCULATOR</h1></header>
+<div class="group">
+  <p class="diplay-calculation"></p>
+<p>
+<button class="
+first-line
+" onclick="
+ calculator('1');">1</button>
+<button class="
+first-line" onclick="
+ calculator('2');">2</button>
+<button class="
+first-line" onclick="
+ calculator('3');">3</button>
+<button class="second-line" onclick="
+ calculator('+');">+</button>
+ </p>
+<p>
+  <button class="
+  first-line" onclick="
+ calculator('4');">4</button>
+<button class="
+first-line" onclick="
+ calculator('5');">5</button>
+<button class="
+first-line" onclick="
+ calculator('6');">6</button>
+ 
+ <button class="
+ second-line" onclick="
+ calculator('-');">-</button>
+ 
+</p> 
+<p>
+  <button class="
+  first-line" onclick="
+ calculator('7');">7</button>
+<button class="
+first-line" onclick="
+ calculator('8');">8</button>
+<button class="
+first-line" onclick="
+ calculator('9');">9</button>
+<button class="second-line"onclick="
+calculator('*');
+">*</button>
+</p>
+  <p>
+  <button class="
+  first-line" onclick="
+ calculator('0');">0</button>
+
+<button class="
+first-line" onclick="
+ calculator('.');">.</button>
+
+<button class="
+first-line" onclick="
+calculation = eval(calculation);
+diplay();
+">=</button>
+
+<button class="
+second-line
+" onclick="
+ calculator('/');
+">/</button>
+</p>
+<p>
+<button class="
+first-line
+" onclick="
+calculation = '';
+calculator(calculation = '');
+">clear</button>
+</p>
+</div>
+</body>
+
+<script>
+
+let calculation = '' ;
+
+function calculator(c) {
+calculation += c;
+
+
+diplay();
+localStorage.setItem('calculator',calculation);
+
+}
+function diplay() {
+  document.querySelector('.diplay-calculation')
+  .innerHTML = calculation;
+}
+let calc = localStorage.getItem('calculator');
+
+let b = !calc ? '': calc;
+console.log(b);
+</script>
+</html>

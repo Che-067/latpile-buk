@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+  <style>
+
+  </style>
+</head>
+ <!-- if load a web page it pop up before running any js -->
+<body onload="alert('guten morgen mein kameradan!')">
+
+  <div class="time-container"></div>
+
+  <!-- if u hover upon something it make somethings to pop up -->
+<button onmouseover="alert('shofo is mine!')";>kriegen</button>
+
+ <!-- if u hover then move away from something somethings it pop up wat u want -->
+<button onmouseout="alert('make sure u red about himmler!')";>himmler</button>
+
+<form name="toolkit">
+  <input type="checkbox" name="box">
+  <input type="button" value="press me!" onclick="validator()">
+
+  <!-- if u use the button style in forms,
+    it will refresh d page hence unchecking the box
+   -->
+  <button onclick="validator()";>press me!</button>
+</form>
+<div class="date-container"></div>
+</body>
+<script>
+function validator() {
+  if (document.toolkit.box.checked) {
+    alert('yeah it is checked!');
+  } else {
+    alert('Nah it is not checked');
+  }
+}
+
+//ANOTHER METHOD USING new Date
+
+
+function currentTime() {
+  let now = new Date();
+let hours = now.getHours();
+let minutes = now.getMinutes();
+let seconds = now.getSeconds();
+const watch = ` ${hours} : ${minutes} : ${seconds}`;
+document.querySelector('.time-container').innerHTML = watch;
+
+}
+
+setInterval("currentTime()",1000);
+
+</script>

@@ -1,0 +1,72 @@
+<html>
+    <head>
+      <title> </title>
+      <style>
+
+      </style>
+      </head> 
+      <body>
+        <div style="
+          background-color: rgb(55, 123, 182);
+          padding: 50px 50px 50px 50px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          ">
+        <button onclick="
+          updateCartquantity(0);
+          ">Show quantity</button>
+          <button onclick="
+          updateCartquantity(1);
+          ">Add to cart</button>
+          <button onclick="
+          updateCartquantity(2);
+          ">+2</button>
+          <button onclick="
+          updateCartquantity(3);
+          ">+3</button>
+          <button onclick="
+          updateCartquantity(4);
+          ">+4</button>
+          <button onclick="
+          updateCartquantity(5);
+          ">+5</button>
+          <button onclick="
+          updateCartquantity(-1);
+          ">-1</button>
+          <button onclick="
+          updateCartquantity(-2);
+          ">-2</button>
+          <button onclick="
+          updateCartquantity(-3);
+          ">-3</button>
+          <button onclick="
+          updateCartquantity(cartQuantity = 0);
+          ">Reset</button>
+          
+          </div>
+          <p class="display"></p>
+      </body>
+      <script>
+         let cartQuantity = 0;
+    
+        function updateCartquantity(barz) {
+         
+          cartQuantity += barz;
+         document.querySelector('.display').innerHTML = `cart quantity: ${cartQuantity}`;
+          if (cartQuantity  > 10) {
+          
+            document.querySelector('.display').innerHTML = `cart quantity: ${cartQuantity}.
+             Cart is full`;
+          } else if (cartQuantity  < 0) {
+            document.querySelector('.display').innerHTML = `cart quantity: ${cartQuantity}.
+             Not enough items on cart`;
+          }
+          
+
+        }
+        </script>
+        </html>
+          
+        
+     

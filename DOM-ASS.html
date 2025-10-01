@@ -1,0 +1,118 @@
+<html>
+  <HEAD>
+    <title>DOM ASS</title>
+    <style>
+      .game-button {
+        background-color: rgb(221, 218, 218);
+        color: black;
+        border-radius: 6px;
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: arial;
+        padding: 15px 20px;
+        cursor: pointer;
+      }
+      .kampf-button {
+        background-color: rgb(221, 218, 218);
+        color: black;
+        border-radius: 6px;
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: arial;
+        padding: 15px 20px;
+        cursor: pointer;
+      }
+      .arzt-button {
+        background-color: rgb(221, 218, 218);
+        color: black;
+        border-radius: 6px;
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: arial;
+        padding: 15px 20px;
+        cursor: pointer;
+      }
+      .shofo {
+        background-color: black;
+        color: aliceblue;
+        border: none;
+      }
+      .deen {
+        background-color: black;
+        color: aliceblue;
+        border: none;
+      }
+      .abu {
+        background-color: black;
+        color: aliceblue;
+        border: none; 
+      }
+
+      
+    </style>
+  </HEAD>
+  <body>
+<input class="input-display" placeholder="Name" type="text" onkeyup="
+  if (event.key === 'Enter') {
+    display();
+  }
+  "> 
+<button onclick="
+display();
+  ">Submit</button>
+<p class="display-name"></p>
+<button class="game-button" onclick="
+if (document.querySelector('.game-button').innerHTML === 'Gamer') {
+  document.querySelector('.game-button').innerHTML = 'Gaming';
+document.querySelector('.game-button').classList.add('shofo');
+document.querySelector('.kampf-button').classList.remove('deen');
+document.querySelector('.arzt-button').classList.remove('abu');
+document.querySelector('.kampf-button').innerHTML = 'Kampf';
+document.querySelector('.arzt-button').innerHTML = 'Arzt';
+
+} else if (document.querySelector('.game-button').innerHTML === 'Gaming') {
+  document.querySelector('.game-button').innerHTML = 'Gamer';
+  document.querySelector('.game-button').classList.remove('shofo');
+
+ } 
+ 
+">Gamer</button>
+<button class="kampf-button" onclick="
+ if (document.querySelector('.kampf-button').innerHTML === 'Kampf') {
+  document.querySelector('.kampf-button').innerHTML = 'Blizkrieg';
+  document.querySelector('.kampf-button').classList.add('deen');
+  document.querySelector('.game-button').classList.remove('shofo');
+  document.querySelector('.arzt-button').classList.remove('abu');
+  document.querySelector('.game-button').innerHTML = 'Gamer';
+  document.querySelector('.arzt-button').innerHTML = 'Arzt';
+} else if (document.querySelector('.kampf-button').innerHTML === 'Blizkrieg') {
+    document.querySelector('.kampf-button').innerHTML = 'Kampf';
+  document.querySelector('.kampf-button').classList.remove('deen');
+} 
+">Kampf</button>
+
+ <button class="arzt-button" onclick="
+  if (document.querySelector('.arzt-button').innerHTML === 'Arzt') {
+  document.querySelector('.arzt-button').innerHTML = 'Arbeit';
+  document.querySelector('.arzt-button').classList.add('abu');
+  document.querySelector('.game-button').classList.remove('shofo');
+  document.querySelector('.kampf-button').classList.remove('deen');
+  document.querySelector('.game-button').innerHTML = 'Gamer';
+  document.querySelector('.kampf-button').innerHTML = 'Kampf';
+} else if (document.querySelector('.arzt-button').innerHTML === 'Arbeit') {
+    document.querySelector('.arzt-button').innerHTML = 'Arzt';
+  document.querySelector('.arzt-button').classList.remove('abu');
+} 
+">Arzt</button>
+  </body>
+  <script>
+function display() {
+  let v1 = document.querySelector('.input-display').value;
+document.querySelector('.display-name').innerHTML = `Your name is: ${v1}`;
+}
+
+  </script>
+</html>
